@@ -1,0 +1,448 @@
+/**
+ * Convatic Front End SCSS
+ */
+
+#convatic {
+	padding: 1em;
+
+	.cv-comments { 
+		border-top: 2px solid #ccc;
+		margin: 0 auto;
+		padding-top: .3em;
+		width: 100%;
+		display: none;
+
+		p {
+			margin-bottom: 0;
+		}
+
+		.cv-left {
+			width: 50%;
+			padding-right: 5px;
+			float: left;
+		}
+
+		.cv-right a {
+			text-decoration: none;
+		}
+
+		.cv-comment-body {
+			padding: 24px 0;
+		}
+
+		.cv-author-name {
+			font-weight: bold;
+			display: inline;
+			position: relative;
+			a {
+				text-decoration: none;
+			}
+
+			.cv-author-details {
+				position: absolute;
+				background-color: #fff;
+				border: 1px solid #ccc;
+				top: 0;
+				left: -6px;
+				padding: 6px;
+				width: 180px;
+				display: none;
+				-webkit-box-shadow: 2px 2px 3px 2px #666666;
+				box-shadow: 1px 1px 4px 1px #999;
+
+				div {
+					margin-top: 15px;
+				}
+
+				.close {
+					position: absolute;
+					top: 2px;
+					right: 3px;
+					color: #ccc;
+					font-size: 18px;
+				}
+
+				.cv-comment-score-max {
+					font-size: 80%;
+				}
+
+				.cv-commenter-score {
+					font-size: 120%;
+				}
+			}
+		}
+
+		.cv-comment-author {
+			padding: 0 15px 10px 0;
+			width: 60px;
+			float: left;
+		}
+
+		.cv-vote-up:before {
+			content: "\25B2";
+			padding-right: 3px;
+		}
+
+		.cv-vote-down:before {
+			content: "\25BC";
+		}
+
+		.cv-vote-up:hover, .cv-vote-down:hover {
+			color: #000;
+		}
+
+		.cv-comment-text {
+			margin: 0 0 5px 75px;
+
+            .comment-awaiting-moderation {
+                padding-left: 0;
+            }
+		}
+
+		.no-avatar .cv-comment-text {
+			margin-left: 0;
+		}
+
+		.cv-comment-rating {
+			padding-right: 3px;
+		}
+
+		.cv-comment-footer {
+			color: #aaa;
+			font-size: 85%;
+			margin: 0;
+			clear: left;
+			padding: 0;
+			list-style-type: none;
+
+			a {
+				color: #aaa;
+				text-decoration: none;
+			}
+
+			div {
+				float: left;
+				margin: 0 0 0 5px;
+				height: 22px;
+				line-height: 22px;
+				vertical-align: middle;
+			}
+
+			.ele:first-child {
+				margin-left: 0;
+			}
+		}
+
+		.cv-comment-header {
+			margin-bottom: 5px;
+
+			.cv-date {
+				color: #aaa;
+				font-size: 85%;
+			}
+		}
+
+		.cv-list-header {
+			font-size: 140%;
+			color: #666;
+
+			.cv-right {
+				text-align: right;
+			}
+
+			a {
+				color: #666;
+			}
+		}
+
+		.cv-twitter {
+			background: url(../../includes/template/img/twitter.png) no-repeat top left;
+			width: 21px;
+			height: 21px;
+			display: inline-block;
+
+			span {
+				display: none;
+			}
+		}
+
+		.cv-facebook {
+			background: url(../../includes/template/img/facebook.png) no-repeat top left;
+			width: 21px;
+			height: 21px;
+			display: inline-block;
+
+			span {
+				display: none;
+			}
+		}
+
+		.cv-comment-reply-link {
+			background: #eee;
+			padding: 0 6px;
+			cursor: pointer;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+		}
+
+		.cv-navigation {
+			text-align: center;
+			margin: 10px 0 0 0;
+		}
+	}
+
+	.cv-no-comments .cv-list-header, .cv-no-comments .cv-commentlist {
+		display: none;
+	}
+
+	.cv-commentlist {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		.children {
+			margin-left: 20px;
+		}
+
+		.parent .comment {
+			margin-left: 20px;
+		}
+
+		.reply {
+			text-align: right;
+		}
+	}
+
+	.cv-commentlist[max-width~='550px'] .children {
+		margin-left: 0;
+	}
+
+	.cv-commentlist[max-width~='550px'] .parent .comment {
+		margin-left: 0;
+	}
+
+	/************/
+
+
+
+
+	/* Comment form */
+	#respond {
+		display: none;
+		max-width: 550px;
+		overflow: auto;
+		margin-top: 20px !important;
+		line-height: 1.3;
+
+		.comment-field-bottom {
+			background-color: #efefef;
+			overflow: auto;
+			padding: 7px;
+			font-size: 11px;
+			height: 56px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+
+			#cv-email-pane {
+				width: 75%;
+				height: 100%;
+				line-height: 42px;
+				float: left;
+				vertical-align: middle;
+
+				.logged-out {
+					vertical-align: middle;
+					height: 100%;
+
+					input {
+						max-width: 350px;
+						margin: 0;
+					}
+				}
+
+				.logged-in {
+					font-size: 130%;
+					height: 100%;
+					display: none;
+					vertical-align: middle;
+				}
+			}
+
+			.form-submit {
+				width: 25%;
+                line-height: 42px;
+				float: right;
+				margin: 0;
+				text-align: right;
+				vertical-align: middle;
+
+				.cv-spinner {
+					margin: 0 10px 0 0;
+					vertical-align: middle;
+					opacity: 0;
+					filter: alpha(opacity=0);
+					-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+				}
+			}
+		}
+
+		.cv-add-site-holder, .edit-site-holder, .edit-name {
+			cursor: pointer;
+		}
+
+		form input[type="text"],
+		form input[type="password"],
+		form textarea,
+		input[type="button"],
+		input[type="submit"] {
+			border-radius: 5px !important;
+            -moz-border-radius: 5px !important;
+			font-size: 12px !important;
+			line-height: 42px !important;
+			vertical-align: middle;
+			width: 100% !important;
+			box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+			height: 42px;
+			padding: 0 8px;
+			margin: 0;
+			border: 1px solid #e0e0e0 !important;
+		}
+
+		form textarea {
+            border-radius: 0 !important;
+            -moz-border-radius: 0 !important;
+			border: 0 !important;
+		}
+
+		.cv-comment-form-comment {
+			border: 1px solid #e0e0e0;
+			border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+		}
+
+		.cv-comment-form-comment {
+			textarea {
+				background-color: transparent;
+			}
+
+			iframe {
+				width: 100%;
+				height: 100px;
+			}
+		}
+
+		#submit {
+			width: auto !important;
+		}
+
+		#cv-login {
+			width: auto !important;
+			color: #fff;
+			padding: 0 14px !important;
+			background-color: #333 !important;
+			background-image: none;
+		}
+
+		&.cv-mobile {
+			.cv-comment-fields {
+				.cv-right, .cv-left {
+					float: none;
+					text-align: left;
+					width: 100%;
+					padding: 0;
+					clear: none
+				}
+			}
+
+			.cv-pre-email {
+				display: none;
+			}
+
+			.cv-spinner {
+				display: none;
+			}
+		}
+
+		.cv-comment-fields {
+			overflow: auto;
+
+			> div {
+				margin: 1.4em 0 1em 0;
+			}
+
+			.cv-left {
+				text-align: left;
+				width: 50%;
+				padding-left: 7px;
+				box-sizing: border-box;
+                -moz-box-sizing: border-box;
+				padding-right: 10px;
+			}
+
+			.cv-right {
+				float: right;
+				text-align: right;
+				box-sizing: border-box;
+                -moz-box-sizing: border-box;
+				padding-left: 10px;
+				padding-right: 7px;
+				width: 50%;
+				clear: right;
+			}
+
+			.cv-subscribe-pane {
+				float: right;
+				clear: right;
+				text-align: right;
+				padding-right: 7px;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				width: 50%;
+				margin: 0;
+			}
+		}
+
+		.add-password {
+			cursor: pointer;
+		}
+
+		.password-message {
+			margin-top: 20px;
+		}
+
+		.logout {
+			cursor: pointer;
+		}
+
+		iframe {
+			display: block;
+		}
+
+		.comment-form-notification,
+		.cv-create-password-desc,
+		.cv-comment-form-password,
+		.cv-create-password-email-confirm,
+		.cv-add-site-holder,
+		.edit-site-holder,
+		.url-holder,
+		.cv-comment-form-create-password,
+		.edit-name-holder,
+		.fixed-name-holder,
+		.login-button-wrapper,
+		.cv-create-password-unconfirmed-desc,
+		.logged-in,
+		.cv-login-message,
+		.cv-subscribe-pane,
+		.cv-password-message .no-password, 
+		.cv-password-message  .added-password {
+			display: none;
+		}
+
+		input.cv-error, iframe.cv-error {
+			background-color: #ffe0e0;
+		}
+	}
+
+	}
